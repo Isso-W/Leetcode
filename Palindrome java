@@ -1,0 +1,13 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        String text = Integer.toString(x);
+        int count = 0;
+        int length = text.length();
+        while(count < (length + 1)/2){
+            if (text.charAt(count) != text.charAt(length - count - 1))
+            {return false;}
+            count++;
+        }
+        return true;
+    }
+}
