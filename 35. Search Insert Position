@@ -1,0 +1,29 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        int ptr = (nums.length - 1) / 2;
+        if (nums[end] < target){
+            return nums.length;
+        }
+        if (nums[start] >= target){
+            return 0;
+        }
+        while(true){
+            if (nums[ptr] == target || (target < nums[ptr] && target > nums[ptr - 1])){
+                return ptr;
+            }
+            else if (target > nums[ptr] && target <= nums[ptr + 1]){
+                return ++ptr;
+            }
+            else if (nums[ptr] > target){
+                end = ptr - 1;
+                ptr = ((start + end) / 2);
+            }
+            else{
+                start = ptr + 1;
+                ptr = ((start + end) / 2);
+            }
+        }
+    }
+}
